@@ -10,6 +10,9 @@ template_feuille = os.path.join(dossier, "feuille_match_vide.xlsx")
 
 # Coordonnees cellule equipe locale, equipe visiteur
 coord_locaux_visiteurs = [[5, 5], [28, 5]]
+# Coordonnees couleur equipe locale, equipe visiteur
+coord_couleurs = [[6, 9], [29, 9]]
+
 # premiere ligne des licences en locaux/adversaires
 prem_ligne_licences = [15, 38]
 # Colonne du nom du joueur
@@ -31,7 +34,8 @@ def GUI(dic_licencies):
     liste_licencies = list(dic_licencies.keys())
     layout = [
         [sg.T("")],
-        [sg.Text("Equipe : "), sg.Input("Drime Time", key="Equipe")],
+        [sg.Text("Equipe : "), sg.Input("Drime Time", key="Equipe"),
+         sg.Text("Couleur"), sg.Input("Violet", key="Couleur")],
         [sg.Text("Adversaire : "), sg.Input(key="Adversaire")],
         [sg.Radio('Locaux', group_id=1, default=True, key="Locaux"),
          sg.Radio('Visiteurs', group_id=1)],
@@ -46,6 +50,7 @@ def GUI(dic_licencies):
             break
         if event == "OK":
             reglages["Equipe"] = values["Equipe"]
+            reglages["Couleur"] = values["Couleur"]
             reglages["Adversaire"] = values["Adversaire"]
             reglages["Locaux"] = values["Locaux"]
             # On ne prend que les joueurs selectionnes parmis les licencies
@@ -57,8 +62,8 @@ def GUI(dic_licencies):
 
 
 def ecrire_feuille(template_feuille, prem_ligne_licences, col_joueur, col_num, reglages):
-    [Locaux, Adversaire, Joueurs, Equipe] = [reglages["Locaux"],
-                                             reglages["Adversaire"], reglages["Joueurs"], reglages["Equipe"]]
+    [Locaux, Adversaire, Joueurs, Equipe, Couleur] = [reglages["Locaux"],
+                                                      reglages["Adversaire"], reglages["Joueurs"], reglages["Equipe"], reglages["Couleur"]]
     xlsx = openpyxl.load_workbook(template_feuille, data_only=True)
     feuille = xlsx.active
     # 0 pour Locaux, 1 pour Visiteurs
@@ -68,6 +73,9 @@ def ecrire_feuille(template_feuille, prem_ligne_licences, col_joueur, col_num, r
                  coord_locaux_visiteurs[index_locaux][1], Equipe)
     feuille.cell(coord_locaux_visiteurs[index_locaux-1][0],
                  coord_locaux_visiteurs[index_locaux-1][1], Adversaire)
+    # Ecriture couleur equipe
+    feuille.cell(coord_couleurs[index_locaux][0],
+                 coord_couleurs[index_locaux][1], Couleur)
     # Ecriture des joueurs
     ligne_joueurs = prem_ligne_licences[index_locaux]
     for v in Joueurs.keys():
