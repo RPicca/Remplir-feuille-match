@@ -1,6 +1,10 @@
 # Remplir-feuille-match
 Remplis une feuille de match à partir d'un template, de la liste des licencies et des paramètres de remplissage
 
+Installation de package Python nécessaires :
+* openpyxl
+* FreeSimpleGUI
+
 Mode d'emploi : 
 * En début de saison, remplir le fichier licencies.csv et remplacer la feuille vide par la nouvelle
 * Lancer le programme
