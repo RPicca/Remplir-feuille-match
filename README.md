@@ -6,7 +6,7 @@ Installation de package Python nécessaires :
 * FreeSimpleGUI
 
 Mode d'emploi : 
-* En début de saison, remplir le fichier licencies.csv et remplacer la feuille vide par la nouvelle
+* En début de saison, remplir le fichier licencies.csv (pas avec Excel, il a tendance à supprimer les 0 des numéros de licences) et remplacer la feuille vide par la nouvelle
 * Lancer le programme
 * Renseigner le nom des équipes et selectionner les joueurs qui seront présents
 * Cliquer sur OK
