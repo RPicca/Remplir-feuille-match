@@ -20,6 +20,7 @@ col_num = 10
 dic_licencies = {}
 with open(fichier_licencies, newline='') as csvfile:
     licencies = csv.reader(csvfile, delimiter=';', quotechar='|')
+    next(licencies)
     for l in licencies:
         # On verifie que la ligne n'est pas vide
         if len(l) > 0:
