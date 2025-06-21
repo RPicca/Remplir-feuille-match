@@ -8,7 +8,7 @@ dossier = os.path.dirname(os.path.abspath(__file__))
 fichier_licencies = os.path.join(dossier, "licencies.csv")
 template_feuille = os.path.join(dossier, "feuille_match_vide.xlsx")
 
-# Coordonnees cellule nom equipe locale
+# Coordonnees cellule equipe locale, equipe visiteur
 coord_locaux_visiteurs = [[5, 5], [28, 5]]
 # premiere ligne des licences en locaux/adversaires
 prem_ligne_licences = [15, 38]
